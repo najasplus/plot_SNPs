@@ -38,7 +38,11 @@ def out(command):
 input_vcf = sys.argv[1]
 print(input_vcf)
 
-#input_vcf = "/ebio/ecnv_projects/zebrafish_natural_variation/data/Individual_strains_variants/GRCz10/Mutants/nr30.filtered_snps.vcf"
+#the path to the source script file
+
+source_path = os.path.dirname(sys.argv[0]) + "/"
+
+
 
 #identify genotype name as spelled in the vcf - find the last of the column names
 grep_cmd = "grep CHROM {}".format(input_vcf)
@@ -75,3 +79,19 @@ snpden_het_cmd_50k = "{} --vcf {}_snps_het.vcf --out {}_het_snps_depth_50k --SNP
 for item in [snpden_hom_cmd_1m, snpden_het_cmd_1m, snpden_hom_cmd_50k, snpden_het_cmd_50k]:
     print(item)
     os.system(item)
+
+#modify the R script so that it has the working directory and the genotype
+cwd = os.getcwd()
+
+with open(source_path + "Plot_snpden_GRCz11.r") as r:
+    r_python = r.readlines()
+
+r_python = ["setwd('{}')\n".format(cwd), "base_name = '{}'\n".format(genotype), "\n"] + r_python
+
+r_filename = genotype + "Plot_snpden_GRCz11.r"
+with open(r_filename, 'w+') as new_r:
+    new_r.writelines(r_python)
+     
+cmd_r = "Rscript {}".format(r_filename)
+os.system(cmd_r)
+
