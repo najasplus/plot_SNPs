@@ -65,12 +65,12 @@ os.system(select_hom)
 #Collect statistics about SNP density of hom and het snps across the chromosomes
 
 #1MB
-snpden_hom_cmd_1m = "{} --vcf {}_snps_hom.vcf --out ${}_hom_snps_depth_1m --SNPdensity 1000000".format(cmd_vcftools, genotype, genotype)
-snpden_het_cmd_1m = "{} --vcf {}_snps_het.vcf --out ${}_het_snps_depth_1m --SNPdensity 1000000".format(cmd_vcftools, genotype, genotype)
+snpden_hom_cmd_1m = "{} --vcf {}_snps_hom.vcf --out {}_hom_snps_depth_1m --SNPdensity 1000000".format(cmd_vcftools, genotype, genotype)
+snpden_het_cmd_1m = "{} --vcf {}_snps_het.vcf --out {}_het_snps_depth_1m --SNPdensity 1000000".format(cmd_vcftools, genotype, genotype)
 
 #50k
-snpden_hom_cmd_50k = "{} {}_snps_hom.vcf --out ${}_hom_snps_depth_50k --SNPdensity 50000".format(cmd_vcftools, genotype, genotype)
-snpden_het_cmd_50k = "{} {}_snps_het.vcf --out ${}_het_snps_depth_50k --SNPdensity 50000".format(cmd_vcftools, genotype, genotype)
+snpden_hom_cmd_50k = "{} --vcf {}_snps_hom.vcf --out {}_hom_snps_depth_50k --SNPdensity 50000".format(cmd_vcftools, genotype, genotype)
+snpden_het_cmd_50k = "{} --vcf {}_snps_het.vcf --out {}_het_snps_depth_50k --SNPdensity 50000".format(cmd_vcftools, genotype, genotype)
 
 for item in [snpden_hom_cmd_1m, snpden_het_cmd_1m, snpden_hom_cmd_50k, snpden_het_cmd_50k]:
     print(item)
