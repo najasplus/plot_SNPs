@@ -19,8 +19,10 @@ mkdir yourworkingdirectory #please mind the disc quota! It should be sufficient 
 
 cd yourworkingdirectory
 
-python3 /path/to/vcf_data_prep_GRCz11.py path/to/variant_calls.vcf
+python3 /path/to/vcf_data_prep_GRCz11.py path/to/variant_calls.vcf #Please provide absolute path to the vcf_data_prep_GRCz11.py
 ```
+
+Please note: at the momen the script needs either the absolute or relative path to the vcf_data_prep_GRCz1*.py. If the script is in your working directory, use "./vcf_data_prep_GRCz1*.py"
 
 Example command for eCNV group:
 ```
